@@ -1,30 +1,40 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace API
 {
     public class User
     {
-        public User(int id, string login, string password)
+        private static int _uniqueId = 0;
+
+        public User() { }
+
+        public User(string login, string password)
         {
-            Id = id;
+            ArgumentNullException.ThrowIfNull(login);
+            ArgumentNullException.ThrowIfNull(password);
+
             Login = login;
             Password = password;
         }
 
-        public int Id { get; private set; }
-        public string Login { get; private set; }
-        public string Password { get; private set; }
-
-        public void Change(int? id = null, string? login = null, string? password = null)
+        public static User Register(string login, string password)
         {
-            if (id.HasValue)
-                Id = id.Value;
+            User user = new User(login, password);
+            user.Id = Interlocked.Increment(ref _uniqueId);
+            return user;
+        }
 
-            if (login != null)
-                Login = login;
+        public int Id { get; set; }
 
-            if (password != null)
-                Password = password;
+        [Required]
+        public string Login { get; set; } = string.Empty;
+
+        [Required]
+        public string Password { get; set; } = string.Empty;
+
+        public void ChangePassword(string newPassword)
+        {
+            Password = newPassword;
         }
     }
 }

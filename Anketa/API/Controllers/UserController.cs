@@ -1,61 +1,62 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Anketa.API;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
     public class UserController : ControllerBase
     {
-        private List<User> _users =
-        [
-            new User(0, "Petya", "Petya12345"),
-            new User(1, "Max222", "222MaxNeMax222"),
-            new User(2, "Byk", "qwerty123456"),
-        ];
+        private readonly UserDatabase _database;
 
-
-        [HttpGet("all")]
-        public ActionResult<List<User>> ShowAllUsers()
+        public UserController(UserDatabase database)
         {
-            return Ok(_users);
+            _database = database;
         }
 
-        [HttpGet("id")]
-        public ActionResult<User> ShowUser(int id)
+        [HttpGet("All")]
+        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
         {
-            User? user = _users.FirstOrDefault(user => user.Id == id);
+            IEnumerable<User> users = await _database.GetAllUsersAsync();
+            return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUserById(int id)
+        {
+            User? user = await _database.GetUserByIdAsync(id);
 
             if (user == null)
                 return NotFound();
 
-            return user;
+            return Ok(user);
         }
 
-        [HttpPatch("UserChange")]
-        public ActionResult ChangeUser(int id, int changeId, string changeLogin, string ChangePassword)
+        [HttpPost("users")]
+        public async Task<ActionResult<User>> CreateUser([FromBody] User user)
         {
-            User? user = _users.FirstOrDefault(user => user.Id == id);
+            User newUser = await _database.CreateUserAsync(user);
+            return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser);
+        }
 
-            if (user == null)
+        [HttpPatch("{id}/password")]
+        public async Task<IActionResult> ChangePassword(int id, [FromBody] string newPassword)
+        {
+            bool successAction = await _database.ChangePasswordAsync(id, newPassword);
+
+            if (successAction == false)
                 return NotFound();
-
-            user.Change(changeId, changeLogin, ChangePassword);
 
             return NoContent();
         }
 
-        [HttpDelete("delete/{id}")]
-        public ActionResult DeleteUser(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletableUser(int id)
         {
-            User? user = _users.FirstOrDefault(user => user.Id == id);
+            bool successAction = await _database.DeleteUserAsync(id);
 
-            if (user == null)
+            if (successAction == false)
                 return NotFound();
-
-            _users.Remove(user);
 
             return NoContent();
         }
