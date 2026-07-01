@@ -42,8 +42,7 @@
               "RelativeToolTip": "API\\UserDatabase.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-27T18:28:34.46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-27T18:28:34.46Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "API\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-25T13:09:58.001Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-25T13:09:58.001Z"
             },
             {
               "$type": "Document",
@@ -66,7 +64,7 @@
               "RelativeDocumentMoniker": "API\\Controllers\\UserController.cs",
               "ToolTip": "H:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B C#\\EJ Project\\Anketa\\API\\Controllers\\UserController.cs",
               "RelativeToolTip": "API\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAQwDgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-25T11:55:32.409Z",
               "EditorCaption": ""
@@ -81,8 +79,7 @@
               "RelativeToolTip": "API\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-23T09:39:52.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-23T09:39:52.565Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "API\\API.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-06-27T18:09:19.354Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-27T18:09:19.354Z"
             }
           ]
         }
